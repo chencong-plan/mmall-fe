@@ -1,0 +1,24 @@
+{
+  "name": "mmall-fe",
+  "version": "1.0.0",
+  "description": "mmall前端代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chencong-plan/mmall-fe.git"
+  },
+  "author": "chencong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chencong-plan/mmall-fe/issues"
+  },
+  "homepage": "https://github.com/chencong-plan/mmall-fe#readme",
+  "devDependencies": {
+    "webpack": "^1.15.0",
+    "webpack-cli": "^2.0.15"
+  },
+  "dependencies": {}
+}
