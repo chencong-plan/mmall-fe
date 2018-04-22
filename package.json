@@ -4,6 +4,10 @@
   "description": "mmall前端代码",
   "main": "index.js",
   "scripts": {
+    "dev" : "WEBPACK_ENV=dev webpack-dev-server --inline --port 8088",
+    "dev_win":"set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
+    "dist" : "WEBPACK_ENV=online webpack",
+    "dist_win":"set WEBPACK_ENV=online && webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,7 +29,8 @@
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^1.15.0",
-    "webpack-cli": "^2.0.15"
+    "webpack-cli": "^2.0.15",
+    "webpack-dev-server": "^1.16.5"
   },
   "dependencies": {}
 }

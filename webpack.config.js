@@ -2,11 +2,18 @@
  * @Author: chencong 
  * @Date: 2018-04-22 14:52:17 
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 17:10:06
+ * @Last Modified time: 2018-04-22 18:44:23
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+
+/**
+ * 环境变量配置，dev / online
+ */
+var WEBPACK_ENV = process.env.WEBPACK_ENV || "dev";
+
+console.log("============== 此时环境为： " + WEBPACK_ENV + "===============");
 
 /**
  * 封装函数，不同页面设置不同的HtmlWebpackPlugin，避免大量重复代码
@@ -28,12 +35,16 @@ var getHtmlConfig = function(name) {
  */
 var config = {
   entry: {
-    common: ["./src/page/common/index.js"],
+    common: [
+      "./src/page/common/index.js",
+      "webpack-dev-server/client?http://localhost:8088"
+    ],
     index: ["./src/page/index/index.js"],
     login: ["./src/page/login/index.js"]
   },
   output: {
     path: "./dist",
+    publicPath: "/dist",
     filename: "js/[name].js"
   },
   externals: {
@@ -67,5 +78,9 @@ var config = {
     new HtmlWebpackPlugin(getHtmlConfig("login"))
   ]
 };
+
+if ("dev" === WEBPACK_ENV) {
+  config.entry.common.push("webpack-dev-server/client?http://localhost:8088");
+}
 
 module.exports = config;

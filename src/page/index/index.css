@@ -2,8 +2,10 @@
  * @Author: chencong 
  * @Date: 2018-04-22 15:56:50 
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 17:04:27
+ * @Last Modified time: 2018-04-22 18:23:47
  */
 body {
   background: url('../../image/test-image.jpg');
+  color: red;
+  font-size: 50px;
 }
