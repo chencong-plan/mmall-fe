@@ -1,0 +1,91 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-22 21:09:16
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-22 23:07:33
+ */
+
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #f6f6f6;
+    /* 字体 从前往后匹配 */
+    font: 12px/1.5 tahoma, arial, Microsoft YaHei, sans-serif;
+}
+li {
+    list-style: none;
+}
+img {
+    display: block;
+    border: none;
+}
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* 定宽布局 */
+.w{
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    /* 超出隐藏 清除浮动 */
+    overflow: hidden;
+}
+.large .w{
+    width: 1600px;
+}
+
+/* 定义全局通用样式 */
+/* 隐藏类 */
+.hide{
+    display: none;
+}
+.link{
+    color: #999;
+    cursor: pointer;
+    text-decoration: none;
+}
+.link hover{
+    color: #e80012;
+}
+.link-text{
+    color: #999;
+    text-decoration: none;
+}
+
+/* btn */
+.btn{
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    border: none;
+    background: #c60023;
+    font-size: 17px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-mini{
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+/* loading */
+.loading{
+    margin: 10px auto;
+    display: block;
+    background: url(../../image/icon/loading.gif) no-repeat;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 65px;
+    height: 65px;
+    opacity: .6;
+}

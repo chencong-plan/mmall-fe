@@ -1,8 +1,8 @@
 /*
- * @Author: chencong 
- * @Date: 2018-04-22 14:52:17 
+ * @Author: chencong
+ * @Date: 2018-04-22 14:52:17
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 19:16:41
+ * @Last Modified time: 2018-04-22 23:12:15
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -21,75 +21,76 @@ console.log("============== 此时环境为： " + WEBPACK_ENV + "==============
  * @param {*name} name
  */
 var getHtmlConfig = function(name) {
-  return {
-    template: "./src/view/" + name + ".html",
-    filename: "view/" + name + ".html",
-    inject: true,
-    hash: true,
-    chunks: ["common", name]
-  };
+    return {
+        template: "./src/view/" + name + ".html",
+        filename: "view/" + name + ".html",
+        inject: true,
+        hash: true,
+        chunks: ["common", name]
+    };
 };
 
 /**
  * webpack-config
  */
 var config = {
-  entry: {
-    common: [
-      "./src/page/common/index.js",
-      "webpack-dev-server/client?http://localhost:8088"
-    ],
-    index: ["./src/page/index/index.js"],
-    login: ["./src/page/login/index.js"]
-  },
-  output: {
-    path: "./dist",
-    publicPath: "/dist",
-    filename: "js/[name].js"
-  },
-  externals: {
-    jquery: "window.jQuery"
-  },
-  module: {
-    loaders: [
-      // 处理css style的loader
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      // 处理img的loader,限制大小，小于为base64 大于为图片路径
-      // 添加limit=100&name=resource/[name].[ext]参数：限制大小为100，同时图片名称为原始名称，而不用哈希
-      {
-        test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
-        loader: "url-loader?limit=100&name=resource/[name].[ext]"
-      }
+    entry: {
+        common: [
+            "./src/page/common/index.js",
+            "webpack-dev-server/client?http://localhost:8088"
+        ],
+        index: ["./src/page/index/index.js"],
+        login: ["./src/page/login/index.js"]
+    },
+    output: {
+        path: "./dist",
+        publicPath: "/dist",
+        filename: "js/[name].js"
+    },
+    externals: {
+        jquery: "window.jQuery"
+    },
+    module: {
+        loaders: [
+            // 处理css style的loader
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+            },
+            // 处理img的loader,限制大小，小于为base64 大于为图片路径
+            // 添加limit=100&name=resource/[name].[ext]参数：限制大小为100，同时图片名称为原始名称，而不用哈希
+            {
+                test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
+                loader: "url-loader?limit=100&name=resource/[name].[ext]"
+            }
+        ]
+    },
+    // 配置地址别名
+    resolve: {
+        alias: {
+            node_modules: __dirname + "/node_modules",
+            util: __dirname + "/src/util",
+            page: __dirname + "/src/page",
+            service: __dirname + "/src/service",
+            image: __dirname + "/src/image"
+        }
+    },
+    plugins: [
+        // 独立通用模块到js/base.js
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "common",
+            filename: "js/base.js"
+        }),
+        // 将css文件单独打包到文件里面
+        new ExtractTextPlugin("css/[name].css"),
+        // html模块的处理
+        new HtmlWebpackPlugin(getHtmlConfig("index")),
+        new HtmlWebpackPlugin(getHtmlConfig("login"))
     ]
-  },
-  // 配置地址别名
-  resolve: {
-    alias: {
-      util: __dirname + "/src/util",
-      page: __dirname + "/src/page",
-      service: __dirname + "/src/service",
-      image: __dirname + "/src/image"
-    }
-  },
-  plugins: [
-    // 独立通用模块到js/base.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "common",
-      filename: "js/base.js"
-    }),
-    // 将css文件单独打包到文件里面
-    new ExtractTextPlugin("css/[name].css"),
-    // html模块的处理
-    new HtmlWebpackPlugin(getHtmlConfig("index")),
-    new HtmlWebpackPlugin(getHtmlConfig("login"))
-  ]
 };
 
 if ("dev" === WEBPACK_ENV) {
-  config.entry.common.push("webpack-dev-server/client?http://localhost:8088");
+    config.entry.common.push("webpack-dev-server/client?http://localhost:8088");
 }
 
 module.exports = config;
