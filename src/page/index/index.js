@@ -1,6 +1,6 @@
 /*
- * @Author: chencong 
- * @Date: 2018-04-22 14:56:07 
+ * @Author: chencong
+ * @Date: 2018-04-22 14:56:07
  * @Last Modified by: chencong
  * @Last Modified time: 2018-04-22 20:18:25
  */
@@ -30,6 +30,6 @@ console.log("渲染获取参数测试:test:" + _mm.getUrlParam("test"));
  */
 var html = "<div>{{data}}</div>";
 var data = {
-  data: "123"
+    data: "123"
 };
 console.log("渲染html代码测试：" + _mm.renderHtml(html, data));
