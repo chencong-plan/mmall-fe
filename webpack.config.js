@@ -2,7 +2,7 @@
  * @Author: chencong 
  * @Date: 2018-04-22 14:52:17 
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 18:44:23
+ * @Last Modified time: 2018-04-22 19:16:41
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -64,6 +64,15 @@ var config = {
         loader: "url-loader?limit=100&name=resource/[name].[ext]"
       }
     ]
+  },
+  // 配置地址别名
+  resolve: {
+    alias: {
+      util: __dirname + "/src/util",
+      page: __dirname + "/src/page",
+      service: __dirname + "/src/service",
+      image: __dirname + "/src/image"
+    }
   },
   plugins: [
     // 独立通用模块到js/base.js
