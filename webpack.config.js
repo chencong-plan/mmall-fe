@@ -2,7 +2,7 @@
  * @Author: chencong 
  * @Date: 2018-04-22 14:52:17 
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 16:45:12
+ * @Last Modified time: 2018-04-22 17:10:06
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -41,9 +41,16 @@ var config = {
   },
   module: {
     loaders: [
+      // 处理css style的loader
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
+      // 处理img的loader,限制大小，小于为base64 大于为图片路径
+      // 添加limit=100&name=resource/[name].[ext]参数：限制大小为100，同时图片名称为原始名称，而不用哈希
+      {
+        test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
+        loader: "url-loader?limit=100&name=resource/[name].[ext]"
       }
     ]
   },
@@ -56,8 +63,8 @@ var config = {
     // 将css文件单独打包到文件里面
     new ExtractTextPlugin("css/[name].css"),
     // html模块的处理
-    new HtmlWebpackPlugin(getHtmlConfig('index')),
-    new HtmlWebpackPlugin(getHtmlConfig('login')),
+    new HtmlWebpackPlugin(getHtmlConfig("index")),
+    new HtmlWebpackPlugin(getHtmlConfig("login"))
   ]
 };
 
