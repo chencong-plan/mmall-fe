@@ -1,0 +1,33 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-22 23:36:08
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-22 23:41:56
+ */
+.nav {
+    background: #eee;
+    height: 40px;
+    line-height: 40px;
+}
+/* 用户部分 */
+.nav .user {
+    float: left;
+}
+
+/* .user.login 中间没有空格代表两者都存在 */
+.nav .user.login{
+    display: none;
+}
+
+.nav .user .link{
+    margin-right: 5px;
+}
+
+/* 导航链接部分 */
+.nav .nav-list {
+    float: right;
+}
+.nav .nav-list .nav-item {
+    display: inline-block;
+    margin-left: 5px;
+}
