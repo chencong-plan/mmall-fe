@@ -1,0 +1,31 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-23 18:36:23
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-23 18:42:09
+ */
+
+.page-wrap{
+    background: #fff;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result-con .result-title{
+    color:  #555;
+}
+
+.result-con{
+    display: none;
+}
+
+.result-con .result-content{
+    margin-top: 20px;
+}
+
+.result-con .result-content .link{
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
