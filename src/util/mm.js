@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 19:03:44
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 10:25:13
+ * @Last Modified time: 2018-04-23 19:09:37
  * 通用工具类
  */
 
@@ -121,7 +121,7 @@ var __mm = {
      */
     doLogin: function() {
         window.location.href =
-            "./login.html?redirect=" + encodeURIComponent(window.location.href);
+            "./user-login.html?redirect=" + encodeURIComponent(window.location.href);
     },
     /**
      * 跳转回首页

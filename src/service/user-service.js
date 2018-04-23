@@ -2,11 +2,21 @@
  * @Author: chencong
  * @Date: 2018-04-23 09:08:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 09:23:28
+ * @Last Modified time: 2018-04-23 20:23:44
  * 用户调用后端代码
  */
 var _mm = require("util/mm.js");
 var _user = {
+    // 用户登录
+    login: function(userInfo, resolve, reject) {
+        _mm.request({
+            url: _mm.getServerUrl("/user/login.do"),
+            data: userInfo,
+            method: "POST",
+            success: resolve,
+            error: reject
+        });
+    },
     // 登出
     logout: function(resolve, reject) {
         _mm.request({

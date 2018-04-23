@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 14:52:17
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 18:35:52
+ * @Last Modified time: 2018-04-23 19:13:16
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -20,11 +20,11 @@ console.log("============== 此时环境为： " + WEBPACK_ENV + "==============
  * 获取html-webpack-plugin参数的方法
  * @param {*name} name
  */
-var getHtmlConfig = function(name,title) {
+var getHtmlConfig = function(name, title) {
     return {
         template: "./src/view/" + name + ".html",
         filename: "view/" + name + ".html",
-        title : title,
+        title: title,
         inject: true,
         hash: true,
         chunks: ["common", name]
@@ -38,7 +38,7 @@ var config = {
     entry: {
         common: ["./src/page/common/index.js"],
         index: ["./src/page/index/index.js"],
-        login: ["./src/page/login/index.js"],
+        "user-login" : ["./src/page/user-login/index.js"],
         result: ["./src/page/result/index.js"]
     },
     output: {
@@ -88,9 +88,9 @@ var config = {
         // 将css文件单独打包到文件里面
         new ExtractTextPlugin("css/[name].css"),
         // html模块的处理
-        new HtmlWebpackPlugin(getHtmlConfig("index",'首页')),
-        new HtmlWebpackPlugin(getHtmlConfig("login",'用户登录')),
-        new HtmlWebpackPlugin(getHtmlConfig("result",'操作结果'))
+        new HtmlWebpackPlugin(getHtmlConfig("index", "首页")),
+        new HtmlWebpackPlugin(getHtmlConfig("user-login", "用户登录")),
+        new HtmlWebpackPlugin(getHtmlConfig("result", "操作结果"))
     ]
 };
 
