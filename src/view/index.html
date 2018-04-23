@@ -11,6 +11,14 @@
     <%= require('html-loader!./layout/nav.html')%>
     <!-- 搜索 -->
     <%= require('html-loader!./layout/header.html')%>
+    <div class="page-wrap w">
+        <!-- 导航 -->
+        <%= require('html-loader!./layout/nav-side.html')%>
+        <!-- 存在侧边栏的导航 -->
+        <div class="content with-nav">
+            test
+        </div>
+    </div>
     <!-- 底部 -->
     <%= require('html-loader!./layout/footer.html')%>
 </body>

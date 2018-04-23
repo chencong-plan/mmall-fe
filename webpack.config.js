@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 14:52:17
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 23:12:15
+ * @Last Modified time: 2018-04-23 11:04:15
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -62,6 +62,11 @@ var config = {
             {
                 test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/,
                 loader: "url-loader?limit=100&name=resource/[name].[ext]"
+            },
+            // 渲染string
+            {
+                test: /\.string$/,
+                loader: "html-loader"
             }
         ]
     },

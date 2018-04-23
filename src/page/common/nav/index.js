@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 23:35:27
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 10:23:49
+ * @Last Modified time: 2018-04-23 10:30:12
  */
 
 require("./index.css");
@@ -58,7 +58,7 @@ var nav = {
             },
             function(errMsg) {
                 // 处理失败 do nothing
-                _mm.errorTips(errMsg);
+                //_mm.errorTips(errMsg);
             }
         );
     },
