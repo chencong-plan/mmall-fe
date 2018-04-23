@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 19:03:44
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 20:56:39
+ * @Last Modified time: 2018-04-23 10:25:13
  * 通用工具类
  */
 
@@ -57,7 +57,7 @@ var __mm = {
      * 可以更换请求地址，
      * 可以统计请求次数
      */
-    getSergerUrl: function(path) {
+    getServerUrl: function(path) {
         return conf.serverHost + path;
     },
     /**
@@ -86,12 +86,14 @@ var __mm = {
      */
     successTips: function(msg) {
         alert(msg || "操作成功");
+        console.log(msg || "操作成功");
     },
     /**
      * 错误提示
      */
     errorTips: function(msg) {
         alert(msg || "哪里不对了~");
+        console.log(msg || "哪里不对了~");
     },
     /**
      * 字段的验证，支持非空，手机，邮箱的判断

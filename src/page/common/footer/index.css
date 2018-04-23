@@ -1,0 +1,25 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-23 09:37:20
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-23 09:42:06
+ * footer的css
+ */
+
+ .footer{
+     padding-bottom: 10p;
+ }
+
+ .footer .links{
+     text-align: center;
+     color: #666;
+     line-height: 30px;
+ }
+ .footer .links .link{
+     padding: 0 10px;
+ }
+ .footer .copyright{
+     text-align: center;
+     color: #666;
+     line-height: 30px;
+ }
