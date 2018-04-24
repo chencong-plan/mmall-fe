@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-24 09:42:32
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-24 10:46:54
+ * @Last Modified time: 2018-04-24 18:38:44
  */
 
 require("./index.css");
@@ -31,6 +31,37 @@ var page = {
     init: function() {
         this.bindEvent();
     },
+    // 提交表单
+    submit: function() {
+        var formData = {
+                username: $.trim($("#username").val()),
+                password: $.trim($("#password").val()),
+                passwordConfirm: $.trim($("#passwordConfirm").val()),
+                phone: $.trim($("#phone").val()),
+                email: $.trim($("#email").val()),
+                question: $.trim($("#question").val()),
+                answer: $.trim($("#answer").val())
+            },
+            // 表单验证结果
+            validateResult = this.formValidate(formData);
+        if (validateResult.status) {
+            // 验证成功，提交
+            _user.register(
+                formData,
+                function(res) {
+                    // 成功
+                    window.location.href = "./result.html?type=register";
+                },
+                function(errMsg) {
+                    // 失败
+                    formError.show(errMsg);
+                }
+            );
+        } else {
+            // 验证失败，错误提示
+            formError.show(validateResult.msg);
+        }
+    },
     // 绑定事件
     bindEvent: function() {
         var _this = this;
@@ -54,6 +85,7 @@ var page = {
         });
         // 注册按钮的点击
         $("#submit").click(function() {
+            console.log(_this.formData);
             _this.submit();
         });
         // 如果按下回车也进行提交
@@ -63,37 +95,6 @@ var page = {
                 _this.submit();
             }
         });
-    },
-    // 提交表单
-    submit: function() {
-        var formData = {
-                username: $.trim($("#username").val()),
-                password: $.trim($("#password").val()),
-                passwordConfirm: $.trim($("#passwordConfirm").val()),
-                phone: $.trim($("#phone").val()),
-                email: $.trim($("#email").val()),
-                quesion: $.trim($("#question").val()),
-                answer: $.trim($("#answer").val())
-            },
-            // 表单验证结果
-            validateResult = this.formValidate(formData);
-        if (validateResult.status) {
-            // 验证成功，提交
-            _user.register(
-                formData,
-                function(res) {
-                    // 成功
-                    window.location.href = "./result.html?type=register";
-                },
-                function(errMsg) {
-                    // 失败
-                    formError.show(errMsg);
-                }
-            );
-        } else {
-            // 验证失败，错误提示
-            formError.show(validateResult.msg);
-        }
     },
     // 表单验证，字段验证
     formValidate: function(formData) {
@@ -133,7 +134,7 @@ var page = {
             return result;
         }
         // 密码提示问题
-        if (!_mm.validate(formData.quesion, "require")) {
+        if (!_mm.validate(formData.question, "require")) {
             result.msg = "问题不能为空";
             return result;
         }
