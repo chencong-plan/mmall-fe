@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 23:35:27
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 10:30:12
+ * @Last Modified time: 2018-04-24 10:29:36
  */
 
 require("./index.css");
@@ -28,7 +28,7 @@ var nav = {
         });
         // 绑定注册点击事件
         $(".js-register").click(function() {
-            window.location.href = "./register.html";
+            window.location.href = "./user-register.html";
         });
         // 退出点击事件
         $(".js-logout").click(function() {

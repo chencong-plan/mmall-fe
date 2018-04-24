@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 14:55:40
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 20:32:34
+ * @Last Modified time: 2018-04-24 10:23:57
  */
 
 require("./index.css");
@@ -17,7 +17,7 @@ var formError = {
         $('.error-item').show().find('.err-msg').text(errMsg);
     },
     hide : function(){
-        $('.error-item').show().find('.err-msg').text('');
+        $('.error-item').hide().find('.err-msg').text('');
     }
 };
 
