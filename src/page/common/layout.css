@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 21:09:16
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 10:04:35
+ * @Last Modified time: 2018-04-24 22:21:12
  */
 
 /* css reset */
@@ -34,6 +34,27 @@ input[type="checkbox"] {
     /* 超出隐藏 清除浮动 */
     overflow: hidden;
 }
+
+/* panel */
+.panel{
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.panel .panel-title{
+    padding: 10px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.panel .panel-body{
+    padding: 10px;
+    overflow: hidden;
+}
+
 .large .w{
     width: 1600px;
 }

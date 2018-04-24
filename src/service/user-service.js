@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-23 09:08:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-24 19:05:27
+ * @Last Modified time: 2018-04-24 23:06:37
  * 用户调用后端代码
  */
 var _mm = require("util/mm.js");
@@ -67,6 +67,25 @@ var _user = {
     login: function(userInfo, resolve, reject) {
         _mm.request({
             url: _mm.getServerUrl("/user/login.do"),
+            data: userInfo,
+            method: "POST",
+            success: resolve,
+            error: reject
+        });
+    },
+    // 获取用户信息
+    getUserInfo:function(resolve,reject){
+        _mm.request({
+            url: _mm.getServerUrl("/user/get_user_info.do"),
+            method: "POST",
+            success: resolve,
+            error: reject
+        });
+    },
+     //更新用户个人信息
+     updateUserInfo: function(userInfo, resolve, reject) {
+        _mm.request({
+            url: _mm.getServerUrl("/user/update_information.do"),
             data: userInfo,
             method: "POST",
             success: resolve,

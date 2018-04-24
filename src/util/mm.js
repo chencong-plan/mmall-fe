@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 19:03:44
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 19:09:37
+ * @Last Modified time: 2018-04-24 22:41:10
  * 通用工具类
  */
 
@@ -42,7 +42,7 @@ var __mm = {
                     __this.doLogin();
                 }
                 // 请求的数据错误
-                else if (10 === res.status) {
+                else if (1 === res.status) {
                     typeof param.error === "function" && param.error(res.msg);
                 }
             },
