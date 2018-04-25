@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 21:09:16
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-24 22:21:12
+ * @Last Modified time: 2018-04-25 10:56:05
  */
 
 /* css reset */
@@ -69,7 +69,7 @@ input[type="checkbox"] {
     cursor: pointer;
     text-decoration: none;
 }
-.link hover{
+.link:hover{
     color: #e80012;
 }
 .link-text{

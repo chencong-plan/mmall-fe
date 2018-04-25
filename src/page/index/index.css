@@ -1,11 +1,91 @@
 /*
- * @Author: chencong 
- * @Date: 2018-04-22 15:56:50 
+ * @Author: chencong
+ * @Date: 2018-04-22 15:56:50
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-22 18:23:47
+ * @Last Modified time: 2018-04-25 11:29:46
  */
-body {
-  background: url('../../image/test-image.jpg');
-  color: red;
-  font-size: 50px;
+
+
+ /* keywords-list */
+ .keywords-list{
+     float: left;
+     width: 240px;
+     height: 350px;
+     padding: 10px 0;
+     margin-right: 10px;
+     background: #666;
+     color: #fff;
+ }
+ .keywords-list .keywords-item{
+     padding-left: 10px;
+     height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+ }
+
+ .keywords-list .keywords-item .link{
+     color: #fff;
+     margin-right: 6px;
+ }
+ .keywords-list .keywords-item .link:hover{
+     color: #c60023;
+ }
+
+ .keywords-list .keywords-item:hover{
+     background: #999;
+ }
+
+ /* banner-con */
+ /* 右边容器 */
+ .banner-con{
+     width: 830px;
+     background: #eee;
+     float: left;
+     height: 370px;
+ }
+ .banner-con .loading{
+     margin-top: 150px;
+ }
+
+ /* 楼层 */
+
+ .floor-wrap .floor-title{
+     height: 50px;
+     line-height: 50px;
+     color: #d58717;
+     font-weight: normal;
+     font-size: 20px;
+     border-bottom: 1px solid #d58717;
+
+ }
+.floor-wrap .floor-list{
+    margin-right: -20px;
 }
+ .floor-wrap .floor-list .floor-item{
+     position: relative;
+     width: 200px;
+     height: 240px;
+     margin: 15px 20px 15px 0;
+     float: left;
+     cursor: pointer;
+     background: #fff;
+ }
+
+ .floor-wrap .floor-list .floor-item .floor-text{
+     position: absolute;
+     top: 12px;
+     left: 20px;
+     font-size: 16px;
+     color: #555;
+ }
+
+ .floor-wrap .floor-list .floor-item .floor-img{
+     position: absolute;
+     right: 15px;
+     bottom: 10p;
+     width: 80%;
+     height: 75%;
+     border: none;
+ }
+
+
