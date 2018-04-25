@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 23:35:27
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-25 10:11:14
+ * @Last Modified time: 2018-04-25 19:49:33
  */
 
 require("./index.css");
@@ -54,7 +54,7 @@ var navSide = {
         for(var i = 0, iLength = this.option.navList.length; i < iLength; i++){
             if(this.option.navList[i].name === this.option.name){
                 this.option.navList[i].isActive = true;
-                console.log(this.option.navList[i].name + ':' + this.option.navList[i].isActive);
+                // console.log(this.option.navList[i].name + ':' + this.option.navList[i].isActive);
             }
         };
         // 渲染list数据
@@ -62,7 +62,7 @@ var navSide = {
             navList : this.option.navList
         });
         // 将html放入容器当中
-        //console.log(navHtml);
+        console.log(navHtml);
         $(".nav-side").html(navHtml);
     }
 };
