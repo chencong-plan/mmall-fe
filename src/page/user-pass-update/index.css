@@ -1,0 +1,27 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-24 22:04:28
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-25 10:03:12
+ */
+
+/* 行列信息 */
+.form-line {
+    margin-bottom: 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.form-line .lable {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+
+/* 修改信息 输入框 */
+.form-line .input {
+    height: 25px;
+    width: 200px;
+    line-height: 30px;
+    font-size: 14px;
+}

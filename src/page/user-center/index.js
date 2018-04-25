@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-24 22:04:31
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-24 22:37:30
+ * @Last Modified time: 2018-04-25 09:13:41
  */
 require('./index.css');
 require("page/common/nav/index.js");
@@ -33,7 +33,7 @@ var page = {
             userHtml = _mm.renderHtml(templateIndex,res);
             $('.panel-body').html(userHtml);
         },function(errMsg){
-            _mm.errTips(errMsg);
+            _mm.errorTips(errMsg);
         });
 
     }
