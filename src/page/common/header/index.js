@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-23 09:52:01
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 10:22:16
+ * @Last Modified time: 2018-04-25 21:58:10
  * header index.js
  */
 require("./index.css");
@@ -13,7 +13,7 @@ var _mm = require("util/mm.js");
 var header = {
     init: function() {
         this.bindEvent();
-
+        this.onLoad();
         return this;
     },
     // 加载时候获取参数

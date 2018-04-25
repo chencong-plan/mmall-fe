@@ -1,0 +1,47 @@
+/*
+ * @Author: chencong
+ * @Date: 2018-04-25 21:55:10
+ * @Last Modified by: chencong
+ * @Last Modified time: 2018-04-25 22:20:58
+ */
+
+/* list */
+
+/* 排序按钮样式 */
+.sort-con {
+    overflow: auto;
+}
+
+.sort-con .sort-item {
+    float: left;
+    display: inline-block;
+    position: relative;
+    padding: 0 8px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ccc;
+    margin-right: -1px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+}
+.sort-con .sort-item.active {
+    background: #c60023;
+    border: 1px solid #c60023;
+    color: #fff;
+}
+
+/* 图标样式 */
+.sort-con .sort-item .fa-sort-desc {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+/* 升序 上面箭头比下面箭头亮 */
+.sort-con .sort-item.asc .fa-sort-desc {
+    opacity: 0.6;
+}
+.sort-con .sort-item.desc .fa-sort-asc {
+    opacity: 0.6;
+}
