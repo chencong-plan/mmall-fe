@@ -1,7 +1,7 @@
 <div class="intro-wrap">
     <div class="p-img-con">
         <div class="main-img-con">
-            <img class="main-img" src="{{imageHost}}{{mainImage}}" alt="{{name}}"/>
+            <img class="main-img" src="{{imageHost}}{{mainImage}}" alt="{{name}}" />
         </div>
         <ul class="p-img-list">
             {{#subImages}}
@@ -24,7 +24,7 @@
         </div>
         <div class="p-info-item p-count-con">
             <span class="label">数量:</span>
-            <input class="p-count" value="1" readonly=""/>
+            <input class="p-count" value="1" readonly="" />
             <span class="p-count-btn plus">+</span>
             <span class="p-count-btn minus">-</span>
         </div>
@@ -36,8 +36,8 @@
 <div class="detail-wrap">
     <div class="detail-tab-con">
         <ul class="tab-list">
-            <li class="tab-item active">商品详情</li>
-            <li class="tab-item ">热门评论</li>
+            <li  class="tab-item product-detail active">商品详情</li>
+            <li  class="tab-item product-comment ">热门评论</li>
         </ul>
     </div>
     <div class="detail-con">

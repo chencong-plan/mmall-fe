@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-25 21:55:26
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 16:11:48
+ * @Last Modified time: 2018-04-26 17:27:52
  */
 /*
  * @Author: chencong
@@ -23,9 +23,22 @@ var _product = {
             error: reject
         });
     },
+    // 获取商品详情
     getProductDetail: function(productId, resolve, reject) {
         _mm.request({
             url: _mm.getServerUrl("/product/detail.do"),
+            data: {
+                productId: productId
+            },
+            method: "POST",
+            success: resolve,
+            error: reject
+        });
+    },
+    // 获取商品品论信息
+    getProductComment: function(productId, resolve, reject) {
+        _mm.request({
+            url: _mm.getServerUrl(""),
             data: {
                 productId: productId
             },

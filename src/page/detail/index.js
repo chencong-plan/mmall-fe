@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-26 10:46:24
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 16:48:26
+ * @Last Modified time: 2018-04-26 17:35:43
  */
 
 require("./index.css");
@@ -11,7 +11,8 @@ require("page/common/header/index.js");
 var _mm = require("util/mm.js");
 var _product = require("service/product-service.js");
 var _cart = require("service/cart-service.js");
-var templateIndex = require("./index.string");
+var templateIndex = require("./detail.string");
+var commentIndex = require("./comment.string");
 
 var page = {
     data: {
@@ -39,30 +40,74 @@ var page = {
         });
         // count的操作
         // count的操作
-        $(document).on('click', '.p-count-btn', function(){
-            var type        = $(this).hasClass('plus') ? 'plus' : 'minus',
-                $pCount     = $('.p-count'),
-                currCount   = parseInt($pCount.val()),
-                minCount    = 1,
-                maxCount    = _this.data.detailInfo.stock || 1;
-            if(type === 'plus'){
+        $(document).on("click", ".p-count-btn", function() {
+            var type = $(this).hasClass("plus") ? "plus" : "minus",
+                $pCount = $(".p-count"),
+                currCount = parseInt($pCount.val()),
+                minCount = 1,
+                maxCount = _this.data.detailInfo.stock || 1;
+            if (type === "plus") {
                 $pCount.val(currCount < maxCount ? currCount + 1 : maxCount);
-            }
-            else if(type === 'minus'){
+            } else if (type === "minus") {
                 $pCount.val(currCount > minCount ? currCount - 1 : minCount);
             }
         });
         // 加入购物车
-        $(document).on('click','.cart-add',function(){
-            _cart.addToCart({
-                productId : _this.data.productId,
-                count : $('.p-count').val()
-            },function(res){
-                window.location.href = './result.html?type=cart-add';
-            },function(errMsg){
-                _mm.errorTips(errMsg);
-            });
+        $(document).on("click", ".cart-add", function() {
+            _cart.addToCart(
+                {
+                    productId: _this.data.productId,
+                    count: $(".p-count").val()
+                },
+                function(res) {
+                    window.location.href = "./result.html?type=cart-add";
+                },
+                function(errMsg) {
+                    _mm.errorTips(errMsg);
+                }
+            );
         });
+        // 切换tab-item
+        $(document).on("click", ".tab-item", function() {
+            var type = $(this).hasClass("product-detail")
+                ? "product-detail"
+                : "product-comment";
+            var $detailCon = $(".detail-con");
+            // 添加active
+            $(this).addClass("active");
+            if (type === "product-detail") {
+                _this.loadDetail();
+                $(".product-comment").removeClass("active");
+            } else if (type === "product-comment") {
+                $(".product-detail").removeClass("active");
+                $detailCon.html("这里是评论吧");
+                _this.loadComment();
+            }
+        });
+    },
+    // 加载评论
+    loadComment: function() {
+        var html = "";
+        var _this = this;
+        // 请求数据接口
+        var $detailCon = $(".detail-con");
+        // loading
+        $detailCon.html('<div class="loading"></div>');
+        _product.getProductComment(
+            this.data.productId,
+            function(res) {
+                // 缓存住html的内容
+                _this.data.commentInfo = res;
+                html = _mm.renderHtml(commentIndex, res);
+                // 加载评论
+                $detailCon.html(html);
+            },
+            function(errMsg) {
+                $detailCon.html(
+                    '<p class="err-tip">此商品太淘气，找不到额</p>'
+                );
+            }
+        );
     },
     // 加载商品详情的数据
     loadDetail: function() {
@@ -83,7 +128,7 @@ var page = {
             },
             function(errMsg) {
                 $(".page-wrap").html(
-                    '<p class="err-tip">此商品太淘气，找不到额</p>'
+                    '<p class="err-tip">该商品还没有评论呢！</p>'
                 );
             }
         );
