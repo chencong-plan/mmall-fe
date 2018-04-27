@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-26 10:46:24
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 17:35:43
+ * @Last Modified time: 2018-04-26 17:40:21
  */
 
 require("./index.css");
@@ -104,7 +104,7 @@ var page = {
             },
             function(errMsg) {
                 $detailCon.html(
-                    '<p class="err-tip">此商品太淘气，找不到额</p>'
+                    '<p class="err-tip">该商品还没有评论呢！</p>'
                 );
             }
         );
@@ -128,7 +128,7 @@ var page = {
             },
             function(errMsg) {
                 $(".page-wrap").html(
-                    '<p class="err-tip">该商品还没有评论呢！</p>'
+                    '<p class="err-tip">此商品太淘气，找不到额</p>'
                 );
             }
         );
