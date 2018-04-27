@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-25 21:55:26
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 17:27:52
+ * @Last Modified time: 2018-04-27 16:17:03
  */
 /*
  * @Author: chencong
@@ -42,7 +42,6 @@ var _product = {
             data: {
                 productId: productId
             },
-            method: "POST",
             success: resolve,
             error: reject
         });

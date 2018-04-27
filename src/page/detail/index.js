@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-26 10:46:24
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 17:40:21
+ * @Last Modified time: 2018-04-27 16:15:38
  */
 
 require("./index.css");
@@ -73,14 +73,13 @@ var page = {
                 ? "product-detail"
                 : "product-comment";
             var $detailCon = $(".detail-con");
-            // 添加active
-            $(this).addClass("active");
+            $(this)
+                .addClass("active")
+                .siblings(".tab-item")
+                .removeClass("active");
             if (type === "product-detail") {
                 _this.loadDetail();
-                $(".product-comment").removeClass("active");
             } else if (type === "product-comment") {
-                $(".product-detail").removeClass("active");
-                $detailCon.html("这里是评论吧");
                 _this.loadComment();
             }
         });
@@ -103,9 +102,7 @@ var page = {
                 $detailCon.html(html);
             },
             function(errMsg) {
-                $detailCon.html(
-                    '<p class="err-tip">该商品还没有评论呢！</p>'
-                );
+                $detailCon.html('<p class="err-tip">该商品还没有评论呢！</p>');
             }
         );
     },
