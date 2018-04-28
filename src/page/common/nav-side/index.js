@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 23:35:27
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-25 19:49:33
+ * @Last Modified time: 2018-04-28 11:21:17
  */
 
 require("./index.css");
@@ -62,7 +62,7 @@ var navSide = {
             navList : this.option.navList
         });
         // 将html放入容器当中
-        console.log(navHtml);
+        // console.log(navHtml);
         $(".nav-side").html(navHtml);
     }
 };
