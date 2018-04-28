@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 11:13:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-27 17:11:08
+ * @Last Modified time: 2018-04-28 10:36:49
  */
 require("./index.css");
 require("page/common/header/index.js");
@@ -36,44 +36,93 @@ var page = {
                 .addClass("active")
                 .siblings(".address-item")
                 .removeClass("active");
-            _this.data.selectedAddressId = $(this).data('id');
+            _this.data.selectedAddressId = $(this).data("id");
         });
 
         // 订单的提交
         $(document).on("click", ".order-submit", function() {
-           var shippingId = _this.data.selectedAddressId;
-           if(shippingId){
-                _order.createOrder({
-                    shippingId : shippingId
-                },function(res){
-                    // 成功
-                    window.location.href = './payment.html?orderNumber='+res.orderNo;
-                },function(errMsg){
-                    // 失败
-                    _mm.errorTips(errMsg);
-                });
-           }else{
-               _mm.errTips('请选择地址后再提交');
-           }
+            var shippingId = _this.data.selectedAddressId;
+            if (shippingId) {
+                _order.createOrder(
+                    {
+                        shippingId: shippingId
+                    },
+                    function(res) {
+                        // 成功
+                        window.location.href =
+                            "./payment.html?orderNumber=" + res.orderNo;
+                    },
+                    function(errMsg) {
+                        // 失败
+                        _mm.errorTips(errMsg);
+                    }
+                );
+            } else {
+                _mm.errTips("请选择地址后再提交");
+            }
         });
 
         // 地址的添加
-        $(document).on('click','.address-add',function(){
+        $(document).on("click", ".address-add", function() {
             addressModal.show({
-                isUpdate : false,
-                onSuccess : function(){
+                isUpdate: false,
+                onSuccess: function() {
                     // 成功后重新加载地址列表
                     _this.loadAddressList();
                 }
             });
+        });
+        // 地址编辑
+        $(document).on("click", ".address-update", function(e) {
+            e.stopPropagation();
+            var shippingId = $(this)
+                .parents(".address-item")
+                .data("id");
+            _address.getAddress(
+                shippingId,
+                function(res) {
+                    addressModal.show({
+                        isUpdate: true,
+                        data: res,
+                        onSuccess: function() {
+                            // 成功后重新加载地址列表
+                            _this.loadAddressList();
+                        }
+                    });
+                },
+                function(errMsg) {
+                    _mm.errorTips(errMsg);
+                }
+            );
+        });
+
+        // 地址的删除
+        $(document).on("click", ".address-delete", function(e) {
+            e.stopPropagation();
+            var id = $(this)
+                .parents(".address-item")
+                .data("id");
+            if (window.confirm("确认要删除改地址吗?")) {
+                _address.deleteAddress(
+                    id,
+                    function(res) {
+                        _this.loadAddressList();
+                    },
+                    function(errMsg) {
+                        _mm.errorTips(errMsg);
+                    }
+                );
+            }
         });
     },
 
     // 加载地址列表
     loadAddressList: function() {
         var _this = this;
+        $('.address-con').html('<div class="loading"></div>');
         _address.getAddressList(
             function(res) {
+                _this.addressFilter(res);
                 var addressHtml = _mm.renderHtml(templateAddress, res);
                 $(".address-con").html(addressHtml);
             },
@@ -84,9 +133,28 @@ var page = {
             }
         );
     },
+    // 处理地址列表中选中列表
+    addressFilter: function(data) {
+        if (this.data.selectedAddressId) {
+            var selectedAddressIdFlag = false;
+            for (var i = 0, length = data.list.length; i < length; i++) {
+                if(data.list[i].id === this.data.selectedAddressId){
+                    // 这个元素即是被选中
+                    data.list[i].isActive = true;
+                    selectedAddressIdFlag = true;
+                }
+            };
+            // 如果以前选中的地址不在列表当中，将其删除
+            if(!selectedAddressIdFlag){
+                this.data.selectedAddressId = null;
+            }
+        }
+    },
     // 加载商品清单
     loadProductList: function() {
         var _this = this;
+        // 加载图标
+        $('.product-con').html('<div class="loading"></div>');
         _order.getProductList(
             function(res) {
                 var productHtml = _mm.renderHtml(templateProduct, res);

@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 11:26:25
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-27 17:00:02
+ * @Last Modified time: 2018-04-28 10:23:25
  */
 
 /*
@@ -166,7 +166,7 @@
 .form .form-line .label{
     display: block;
     float: left;
-    width: 85px;
+    width: 100px;
     text-align: right;
     height: 30px;
     line-height: 30px;
@@ -184,7 +184,7 @@
     margin-right: 10px;
 }
 .form .form-line .btn{
-    margin-left: 95px;
+    margin-left: 110px;
     height: 30px;
     line-height: 30px;
     font-size: 13px;
