@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-23 18:36:23
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-23 18:42:09
+ * @Last Modified time: 2018-04-28 15:57:05
  */
 
 .page-wrap{
@@ -28,4 +28,9 @@
     margin: 0 5px;
     padding: 5px 10px;
     border: 1px solid #ccc;
+}
+
+/* 订单编号 */
+.result-con .result-title .order-no{
+    color: #c60023;
 }
