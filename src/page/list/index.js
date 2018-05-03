@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-25 21:54:34
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-26 10:42:03
+ * @Last Modified time: 2018-05-03 16:07:40
  */
 require("./index.css");
 require("page/common/nav/index.js");
@@ -19,7 +19,7 @@ var page = {
             categoryId: _mm.getUrlParam("categoryId") || "",
             orderBy: _mm.getUrlParam("orderBy") || "default",
             pageNum: _mm.getUrlParam("pageNum") || 1,
-            pageSize: _mm.getUrlParam("pageSize") || 20
+            pageSize: _mm.getUrlParam("pageSize") || 10
         }
     },
     init: function() {
