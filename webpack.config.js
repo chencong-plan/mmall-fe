@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 14:52:17
  * @Last Modified by: chencong
- * @Last Modified time: 2018-05-03 14:54:20
+ * @Last Modified time: 2018-05-03 15:15:59
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -57,8 +57,8 @@ var config = {
     },
     output: {
         path: __dirname + "/dist/",
-        // publicPath:"dev" === WEBPACK_ENV ? "/dist/" : "//s.dianpoint.com/mmall-fe/dist/",
-        publicPath: "/dist/",
+        publicPath:"dev" === WEBPACK_ENV ? "/dist/" : "//s.dianpoint.com/mmall-fe/dist/",
+        // publicPath: "/dist/",
         filename: "js/[name].js"
     },
     externals: {
