@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-22 23:35:27
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-28 11:20:51
+ * @Last Modified time: 2018-05-03 10:15:39
  */
 
 require("./index.css");
@@ -58,18 +58,22 @@ var nav = {
             },
             function(errMsg) {
                 // 处理失败 do nothing
-                _mm.errorTips(errMsg);
+                // _mm.errorTips(errMsg);
+                console.log(errMsg);
             }
         );
     },
     // 加载购物车数量
     loadCartCount: function() {
-        _cart.getCartCount(function(res){
-            $('.nav .cart-count').text(res || 0);
-        },function(errMsg){
-            // do nothing 初测回复默认0
-            $('.nav .cart-count').text(0);
-        });
+        _cart.getCartCount(
+            function(res) {
+                $(".nav .cart-count").text(res || 0);
+            },
+            function(errMsg) {
+                // do nothing 初测回复默认0
+                $(".nav .cart-count").text(0);
+            }
+        );
     }
 };
 
