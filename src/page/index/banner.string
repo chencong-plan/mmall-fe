@@ -2,27 +2,33 @@
     <ul>
         <li>
             <a href="./list.html?categoryId=100021" target="_blank">
-                <img class="banner-img" src="../../image/banner/banner1.jpg" />
+                <img class="banner-img" src="http://img.dianpoint.com/100779ce-fbaa-4877-961a-2c738e7fa676.jpg" />
             </a>
         </li>
         <li>
+
             <a href="./list.html?categoryId=100030" target="_blank">
-                <img class="banner-img" src="../../image/banner/banner2.jpg" />
+                <img class="banner-img" src="http://img.dianpoint.com/30b890ae-68b5-49d2-9f7a-872d75da19ec.jpg" />
             </a>
         </li>
         <li>
             <a href="./list.html?categoryId=100016" target="_blank">
-                <img class="banner-img" src="../../image/banner/banner3.jpg" />
+                <img class="banner-img" src="http://img.dianpoint.com/6ccdae7e-7ae4-4cc2-8533-d806daa109fc.jpg" />
             </a>
         </li>
         <li>
             <a href="./list.html?categoryId=100001" target="_blank">
-                <img class="banner-img" src="../../image/banner/banner4.jpg" />
+                <img class="banner-img" src="http://img.dianpoint.com/66193aff-3869-48de-a4b5-f79e4b623085.jpg" />
             </a>
         </li>
         <li>
             <a href="./list.html?categoryId=100021" target="_blank">
-                <img class="banner-img" src="../../image/banner/banner5.jpg" />
+                <img class="banner-img" src="http://img.dianpoint.com/24ede440-5118-42a6-b5c5-3932be1bbed7.jpg" />
+            </a>
+        </li>
+        <li>
+            <a href="./list.html?categoryId=100021" target="_blank">
+                <img class="banner-img" src="http://img.dianpoint.com/2a62eeeb-9640-4869-86d7-547259d229bb.png" />
             </a>
         </li>
     </ul>
