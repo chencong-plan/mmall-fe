@@ -92,24 +92,24 @@ var page = {
         var $detailCon = $(".detail-con");
         // loading
         $detailCon.html('<div class="loading"></div>');
-        // _product.getProductComment(
-        //     this.data.productId,
-        //     function(res) {
-        //         // 缓存住html的内容
-        //         _this.data.commentInfo = res;
-        //         html = _mm.renderHtml(commentIndex, res);
-        //         // 加载评论
-        //         $detailCon.html(html);
-        //     },
-        //     function(errMsg) {
-        //         $detailCon.html('<p class="err-tip">该商品还没有评论呢！</p>');
-        //     }
-        // );
+        _product.getProductComment(
+            this.data.productId,
+            function (res) {
+                // 缓存住html的内容
+                _this.data.commentInfo = res;
+                html = _mm.renderHtml(commentIndex, res);
+                // 加载评论
+                $detailCon.html(html);
+            },
+            function (errMsg) {
+                $detailCon.html('<p class="err-tip">该商品还没有评论呢！</p>');
+            }
+        );
         // 上面为从后台当中加载评论接口，下面将使用畅言评论接口
         // ====================使用畅言===================
-        html = _mm.renderHtml(commentIndex, _this.data.productId);
-        console.log(html + " : "+ _this.data.productId);
-        $detailCon.html(html);
+        // html = _mm.renderHtml(commentIndex, _this.data.productId);
+        // console.log(html + " : "+ _this.data.productId);
+        // $detailCon.html(html);
     },
     // 加载商品详情的数据
     loadDetail: function () {
