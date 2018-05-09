@@ -18,21 +18,21 @@ var page = {
     data: {
         productId: _mm.getUrlParam("productId") || ""
     },
-    init: function() {
+    init: function () {
         this.onLoad();
         this.bindEvent();
     },
-    onLoad: function() {
+    onLoad: function () {
         // 如果没有传productId, 自动跳回首页
         if (!this.data.productId) {
             _mm.goHome();
         }
         this.loadDetail();
     },
-    bindEvent: function() {
+    bindEvent: function () {
         // 事件代理 图片预览
         var _this = this;
-        $(document).on("mouseenter", ".p-img-item", function() {
+        $(document).on("mouseenter", ".p-img-item", function () {
             var imageUrl = $(this)
                 .find(".p-img")
                 .attr("src");
@@ -40,7 +40,7 @@ var page = {
         });
         // count的操作
         // count的操作
-        $(document).on("click", ".p-count-btn", function() {
+        $(document).on("click", ".p-count-btn", function () {
             var type = $(this).hasClass("plus") ? "plus" : "minus",
                 $pCount = $(".p-count"),
                 currCount = parseInt($pCount.val()),
@@ -53,22 +53,22 @@ var page = {
             }
         });
         // 加入购物车
-        $(document).on("click", ".cart-add", function() {
+        $(document).on("click", ".cart-add", function () {
             _cart.addToCart(
                 {
                     productId: _this.data.productId,
                     count: $(".p-count").val()
                 },
-                function(res) {
+                function (res) {
                     window.location.href = "./result.html?type=cart-add";
                 },
-                function(errMsg) {
+                function (errMsg) {
                     _mm.errorTips(errMsg);
                 }
             );
         });
         // 切换tab-item
-        $(document).on("click", ".tab-item", function() {
+        $(document).on("click", ".tab-item", function () {
             var type = $(this).hasClass("product-detail")
                 ? "product-detail"
                 : "product-comment";
@@ -85,29 +85,33 @@ var page = {
         });
     },
     // 加载评论
-    loadComment: function() {
+    loadComment: function () {
         var html = "";
         var _this = this;
         // 请求数据接口
         var $detailCon = $(".detail-con");
         // loading
         $detailCon.html('<div class="loading"></div>');
-        _product.getProductComment(
-            this.data.productId,
-            function(res) {
-                // 缓存住html的内容
-                _this.data.commentInfo = res;
-                html = _mm.renderHtml(commentIndex, res);
-                // 加载评论
-                $detailCon.html(html);
-            },
-            function(errMsg) {
-                $detailCon.html('<p class="err-tip">该商品还没有评论呢！</p>');
-            }
-        );
+        // _product.getProductComment(
+        //     this.data.productId,
+        //     function(res) {
+        //         // 缓存住html的内容
+        //         _this.data.commentInfo = res;
+        //         html = _mm.renderHtml(commentIndex, res);
+        //         // 加载评论
+        //         $detailCon.html(html);
+        //     },
+        //     function(errMsg) {
+        //         $detailCon.html('<p class="err-tip">该商品还没有评论呢！</p>');
+        //     }
+        // );
+        // 上面为从后台当中加载评论接口，下面将使用畅言评论接口
+        // ====================使用畅言===================
+        html = _mm.renderHtml(commentIndex, _this.data.productId);
+        $detailCon.html(html);
     },
     // 加载商品详情的数据
-    loadDetail: function() {
+    loadDetail: function () {
         var html = "";
         var _this = this;
         $pageWrap = $(".page-wrap");
@@ -116,14 +120,14 @@ var page = {
         // 请求数据接口
         _product.getProductDetail(
             this.data.productId,
-            function(res) {
+            function (res) {
                 _this.filter(res);
                 // 缓存住html的内容
                 _this.data.detailInfo = res;
                 html = _mm.renderHtml(templateIndex, res);
                 $(".page-wrap").html(html);
             },
-            function(errMsg) {
+            function (errMsg) {
                 $(".page-wrap").html(
                     '<p class="err-tip">此商品太淘气，找不到额</p>'
                 );
@@ -131,10 +135,10 @@ var page = {
         );
     },
     // js引用类型
-    filter: function(data) {
+    filter: function (data) {
         data.subImages = data.subImages.split(",");
     }
 };
-$(function() {
+$(function () {
     page.init();
 });
