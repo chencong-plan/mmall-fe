@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 17:04:32
  * @Last Modified by: chencong
- * @Last Modified time: 2018-05-26 13:19:06
+ * @Last Modified time: 2018-05-26 13:44:58
  */
 var _mm = require("util/mm.js");
 var _address = require("service/address-service.js");
@@ -24,8 +24,7 @@ var addressModal = {
             };
             autocomplete = new AMap.Autocomplete(autoOptions);
             var placeSearch = new AMap.PlaceSearch({
-                city: '北京',
-                map: map
+                city: '北京'
             });
             AMap.event.addListener(autocomplete, "select", function (e) {
                 //TODO 针对选中的poi实现自己的功能

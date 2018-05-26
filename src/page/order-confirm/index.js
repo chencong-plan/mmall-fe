@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 11:13:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-05-26 13:38:51
+ * @Last Modified time: 2018-05-26 13:46:49
  */
 require("./index.css");
 require("page/common/header/index.js");
@@ -71,7 +71,7 @@ var page = {
                     _this.loadAddressList();
                 }
             });
-             /**
+            /**
              * 加载地图
              */
             addressModal.initMap();
@@ -93,6 +93,10 @@ var page = {
                             _this.loadAddressList();
                         }
                     });
+                    /**
+                     * 加载地图
+                     */
+                    addressModal.initMap();
                 },
                 function(errMsg) {
                     _mm.errorTips(errMsg);
@@ -122,11 +126,6 @@ var page = {
 
     // 加载地址列表
     loadAddressList: function() {
-        /**
-         * 加载地图
-         */
-        addressModal.initMap();
-
         var _this = this;
         $(".address-con").html('<div class="loading"></div>');
         _address.getAddressList(
