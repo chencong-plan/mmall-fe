@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 11:13:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-05-26 13:33:26
+ * @Last Modified time: 2018-05-26 13:38:51
  */
 require("./index.css");
 require("page/common/header/index.js");
@@ -64,11 +64,6 @@ var page = {
 
         // 地址的添加 加载地图插件
         $(document).on("click", ".address-add", function() {
-            /**
-             * 加载地图
-             */
-            addressModal.initMap();
-
             addressModal.show({
                 isUpdate: false,
                 onSuccess: function() {
@@ -76,14 +71,13 @@ var page = {
                     _this.loadAddressList();
                 }
             });
-        });
-        // 地址编辑 加载地图插件
-        $(document).on("click", ".address-update", function(e) {
-            /**
+             /**
              * 加载地图
              */
             addressModal.initMap();
-
+        });
+        // 地址编辑 加载地图插件
+        $(document).on("click", ".address-update", function(e) {
             e.stopPropagation();
             var shippingId = $(this)
                 .parents(".address-item")
@@ -128,8 +122,13 @@ var page = {
 
     // 加载地址列表
     loadAddressList: function() {
+        /**
+         * 加载地图
+         */
+        addressModal.initMap();
+
         var _this = this;
-        $('.address-con').html('<div class="loading"></div>');
+        $(".address-con").html('<div class="loading"></div>');
         _address.getAddressList(
             function(res) {
                 _this.addressFilter(res);
@@ -148,14 +147,14 @@ var page = {
         if (this.data.selectedAddressId) {
             var selectedAddressIdFlag = false;
             for (var i = 0, length = data.list.length; i < length; i++) {
-                if(data.list[i].id === this.data.selectedAddressId){
+                if (data.list[i].id === this.data.selectedAddressId) {
                     // 这个元素即是被选中
                     data.list[i].isActive = true;
                     selectedAddressIdFlag = true;
                 }
-            };
+            }
             // 如果以前选中的地址不在列表当中，将其删除
-            if(!selectedAddressIdFlag){
+            if (!selectedAddressIdFlag) {
                 this.data.selectedAddressId = null;
             }
         }
@@ -164,7 +163,7 @@ var page = {
     loadProductList: function() {
         var _this = this;
         // 加载图标
-        $('.product-con').html('<div class="loading"></div>');
+        $(".product-con").html('<div class="loading"></div>');
         _order.getProductList(
             function(res) {
                 var productHtml = _mm.renderHtml(templateProduct, res);
