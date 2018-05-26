@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 11:13:58
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-28 10:36:49
+ * @Last Modified time: 2018-05-26 13:21:37
  */
 require("./index.css");
 require("page/common/header/index.js");
@@ -64,6 +64,10 @@ var page = {
 
         // 地址的添加
         $(document).on("click", ".address-add", function() {
+            /**
+             * 加载地图
+             */
+            addressModal.initMap();
             addressModal.show({
                 isUpdate: false,
                 onSuccess: function() {

@@ -2,7 +2,7 @@
  * @Author: chencong
  * @Date: 2018-04-27 17:04:32
  * @Last Modified by: chencong
- * @Last Modified time: 2018-04-28 10:18:05
+ * @Last Modified time: 2018-05-26 13:19:06
  */
 var _mm = require("util/mm.js");
 var _address = require("service/address-service.js");
@@ -10,6 +10,31 @@ var templateAddressModal = require("./address-modal.string");
 var _cities = require("util/cities/index.js");
 
 var addressModal = {
+
+    /**
+     * 加载地图信息
+     */
+    initMap: function () {
+        var windowsArr = [];
+        var marker = [];
+        AMap.plugin(['AMap.Autocomplete', 'AMap.PlaceSearch'], function () {
+            var autoOptions = {
+                city: "北京", //城市，默认全国
+                input: "receiver-address"//使用联想输入的input的id
+            };
+            autocomplete = new AMap.Autocomplete(autoOptions);
+            var placeSearch = new AMap.PlaceSearch({
+                city: '北京',
+                map: map
+            });
+            AMap.event.addListener(autocomplete, "select", function (e) {
+                //TODO 针对选中的poi实现自己的功能
+                placeSearch.setCity(e.poi.adcode);
+                placeSearch.search(e.poi.name)
+            });
+        });
+    },
+
     show: function(option) {
         this.option = option;
         (this.option.data = option.data || {}),
